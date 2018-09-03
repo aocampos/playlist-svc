@@ -1,0 +1,70 @@
+version: '3'
+services:
+  
+  config:
+    hostname: config
+    image: aocampos/playlist-config-svr
+    ports: 
+      - "8888:8888"
+    networks:
+      - playlist
+  discovery:
+    hostname: discovery
+    restart: always
+    image: aocampos/playlist-eureka-svr
+    ports:
+      - "8761:8761"
+    networks:
+      - playlist
+  playlist-weather-svc-1:
+    hostname: playlist-weather-svc-1
+    restart: always
+    image: aocampos/playlist-weather-svc
+    ports:
+      - "8071:8080"
+    networks:
+      - playlist
+  playlist-weather-svc-2:
+    hostname: playlist-weather-svc-2
+    restart: always
+    image: aocampos/playlist-weather-svc
+    ports:
+      - "8081:8080"
+    networks:
+      - playlist
+  playlist-music-svc-1:
+    hostname: playlist-music-svc-1
+    restart: always
+    image: aocampos/playlist-music-svc
+    ports:
+      - "8072:8080"
+    networks:
+      - playlist
+  playlist-music-svc-2:
+    hostname: playlist-music-svc-2
+    restart: always
+    image: aocampos/playlist-music-svc
+    ports:
+      - "8082:8080"
+    networks:
+      - playlist
+  playlist-svc-1:
+    hostname: playlist-svc-1
+    restart: always
+    image: aocampos/playlist-svc
+    ports:
+      - "8073:8080"
+    networks:
+      - playlist
+  playlist-svc-2:
+    hostname: playlist-svc-2
+    restart: always
+    image: aocampos/playlist-svc
+    ports:
+      - "8083:8080"
+    networks:
+      - playlist
+
+networks:
+  playlist:
+    driver: bridge
