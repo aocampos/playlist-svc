@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: playlist-svc
+  cloud:
+    config:
+      enable: false
+
+eureka:
+  client:
+    enable: false
